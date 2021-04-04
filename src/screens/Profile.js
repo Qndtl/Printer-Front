@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import HeaderLayout from "../components/HeaderLayout";
 import { Wrapper } from "../components/Nav/sharedStyle";
@@ -9,6 +10,10 @@ import Cposts from "../components/Profile/Cposts/Cposts";
 import Followers from "../components/Profile/Followers/Followers";
 import Followings from "../components/Profile/Following/Followings";
 import Gposts from "../components/Profile/Gposts/Gposts";
+
+const Container = styled.div`
+  height: calc(100vh - 380px);
+`;
 
 const UserContainer = styled.div`
   min-width: 1310px;
@@ -135,48 +140,50 @@ function Profile() {
   return (
     <HeaderLayout>
       <Wrapper>
-        <UserContainer>
-          <AvatarContainer>
-            <img src={user?.avatar} alt={user?.username} />
-          </AvatarContainer>
-          <InfoContainer>
-            <Row>
-              <span>{user?.username}</span>
-              {
-                isSelf ? <EditButton>프로필 편집</EditButton> :
-                  isFollowing ?
-                    <FollowButton style={{ backgroundColor: "tomato" }} onClick={clickUnfollow}>언팔로우</FollowButton> :
-                    <FollowButton onClick={clickFollow}>팔로우</FollowButton>
-              }
-            </Row>
-            <Row>
-              <span style={{ cursor: "pointer" }}>팔로워 {followerNum}</span>
-              <span style={{ cursor: "pointer" }}>팔로잉 {followingNum}</span>
-              <span>게시물 {user?.CommunityPost?.length + user?.GalleryPost?.length}</span>
-            </Row>
-            <Row>
-              <span>소개 </span>
-            </Row>
-          </InfoContainer>
-        </UserContainer>
-        <hr style={{ width: "70%", minWidth: "1310px" }} />
-        <MoreContainer>
-          <NavContainer>
-            <ul>
-              <li onClick={() => setAction('gallerypost')}>갤러리 게시물</li>
-              <li onClick={() => setAction('communitypost')}>커뮤니티 게시물</li>
-              <li onClick={() => setAction('follower')}>팔로워</li>
-              <li onClick={() => setAction('following')}>팔로잉</li>
-            </ul>
-          </NavContainer>
-          {
-            action === 'gallerypost' ?
-              <Gposts galleryPostsId={user?.GalleryPost} /> : action === 'communitypost' ?
-                <Cposts communityPostsId={user?.CommunityPost} /> : action === 'follower' ?
-                  <Followers followers={user?.followers} /> : action === 'following' ?
-                    <Followings followings={user?.following} /> : null
-          }
-        </MoreContainer>
+        <Container>
+          <UserContainer>
+            <AvatarContainer>
+              <img src={user?.avatar} alt={user?.username} />
+            </AvatarContainer>
+            <InfoContainer>
+              <Row>
+                <span>{user?.username}</span>
+                {
+                  isSelf ? <EditButton><Link to='/edit/profile'>프로필 편집</Link></EditButton> :
+                    isFollowing ?
+                      <FollowButton style={{ backgroundColor: "tomato" }} onClick={clickUnfollow}>언팔로우</FollowButton> :
+                      <FollowButton onClick={clickFollow}>팔로우</FollowButton>
+                }
+              </Row>
+              <Row>
+                <span>팔로워 {followerNum}</span>
+                <span>팔로잉 {followingNum}</span>
+                <span>게시물 {user?.CommunityPost?.length + user?.GalleryPost?.length}</span>
+              </Row>
+              <Row>
+                <span>소개 </span>
+              </Row>
+            </InfoContainer>
+          </UserContainer>
+          <hr style={{ width: "70%", minWidth: "1310px" }} />
+          <MoreContainer>
+            <NavContainer>
+              <ul>
+                <li onClick={() => setAction('gallerypost')}>갤러리 게시물</li>
+                <li onClick={() => setAction('communitypost')}>커뮤니티 게시물</li>
+                <li onClick={() => setAction('follower')}>팔로워</li>
+                <li onClick={() => setAction('following')}>팔로잉</li>
+              </ul>
+            </NavContainer>
+            {
+              action === 'gallerypost' ?
+                <Gposts galleryPostsId={user?.GalleryPost} /> : action === 'communitypost' ?
+                  <Cposts communityPostsId={user?.CommunityPost} /> : action === 'follower' ?
+                    <Followers followers={user?.followers} /> : action === 'following' ?
+                      <Followings followings={user?.following} /> : null
+            }
+          </MoreContainer>
+        </Container>
       </Wrapper>
     </HeaderLayout>
   )

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import HeaderLayout from "../../components/HeaderLayout";
 import FreeCard from "../../components/Nav/gallery/FreeCard";
 import UserCard from "../../components/Nav/gallery/UserCard";
@@ -56,6 +56,45 @@ const Container = styled.div`
   grid-template-rows: 1fr;
   place-items: center;
   grid-gap: 10px;
+
+  /* This should go away when payment gallery added */
+  &:nth-child(2){
+    display: flex;
+    height: 379px;
+    position: relative;
+    overflow: hidden;
+  }
+`;
+
+const Slide = keyframes`
+  0%{
+    right: -100%;
+  }
+  25%{
+    right: -50%;
+  }
+  50%{
+    right: 0%;
+  }
+  75%{
+    right: 50%;
+  }
+  100%{
+    right: 100%;
+  }
+`;
+
+const Prepare = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 150px;
+  width: 100%;
+  height: 100%;
+  font-weight: 600;
+  color: tomato;
+  position: relative;
+  animation: ${Slide} linear infinite 10s;
 `;
 
 function Gallery() {
@@ -96,6 +135,7 @@ function Gallery() {
           <Title>이달의 유료 작품</Title>
           <Container>
             {/* pays?.map(post => <PostCard key={post.id} post={post} />) */}
+            <Prepare>유료 도면 준비중</Prepare>
           </Container>
         </Payment>
         <User>

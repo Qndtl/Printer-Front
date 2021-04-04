@@ -77,6 +77,9 @@ const Signup = styled.div`
   font-weight: 600;
   font-size: 20px;
   color: skyblue;
+  padding: 0px 10px 4px 10px;
+  border: 3px solid skyblue;
+  border-radius: 10px;
 `;
 
 const Login = styled.div`
@@ -85,6 +88,9 @@ const Login = styled.div`
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
+  padding: 0px 10px 4px 10px;
+  border: 3px solid forestgreen;
+  border-radius: 10px;
 `;
 
 const Logout = styled.div`
@@ -93,11 +99,14 @@ const Logout = styled.div`
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
+  padding: 0px 10px 4px 10px;
+  border: 3px solid tomato;
+  border-radius: 10px;
 `;
 
 function Header() {
   const isLoggedIn = useSelector(state => state.userReducer.isLoggedIn);
-  //const loggedInUser = useSelector(state => state.userReducer.user);
+  const loggedInUser = useSelector(state => state.userReducer.user);
   //console.log(isLoggedIn);
   const token = localStorage.getItem('jwt');
   const dispatch = useDispatch();
@@ -152,7 +161,7 @@ function Header() {
         </form>
         {
           isLoggedIn ? <>
-            <UserIcon />
+            <Link to={`/user/${loggedInUser.id}`}><UserIcon /></Link>
             <Logout onClick={clickLogout}>Logout</Logout>
           </> : <>
             <Link to='/login'><Login>Login</Login></Link>

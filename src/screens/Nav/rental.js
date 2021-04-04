@@ -35,7 +35,7 @@ const ProductContainer = styled.div`
   width: 100%;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
-  grid-gap: 10px;
+  grid-gap: 50px;
 `;
 
 function Rental() {

@@ -10,7 +10,7 @@ function Gposts({ galleryPostsId }) {
   //console.log(galleryPostsId);
   return (
     <Container>
-      {galleryPostsId?.map((id, i) => <Gpost key={i} id={id} />)}
+      {galleryPostsId === 0 ? "Gallery post not found" : galleryPostsId?.map((id, i) => <Gpost key={i} id={id} />)}
     </Container>
   )
 }

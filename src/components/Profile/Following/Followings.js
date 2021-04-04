@@ -11,7 +11,7 @@ function Followings({ followings }) {
   //console.log(followers)
   return (
     <Container>
-      {followings.map(following => <Following key={following.id} following={following} />)}
+      {followings.length === 0 ? "Followings not found" : followings.map(following => <Following key={following.id} following={following} />)}
     </Container>
   )
 }

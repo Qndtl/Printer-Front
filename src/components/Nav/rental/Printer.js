@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components"
 
 const Container = styled.div`
-  min-width: 350px;
-  max-width: 350px;
+  width: 100%;
+  max-width: 300px;
   height: 450px;
   margin: 0px 60px;
   display: grid;

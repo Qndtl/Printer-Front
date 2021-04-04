@@ -12,7 +12,7 @@ function Followers({ followers }) {
   //console.log(followers)
   return (
     <Container>
-      {followers.map(follower => <Follower key={follower.id} follower={follower} />)}
+      {followers.length === 0 ? "Followers not found" : followers.map(follower => <Follower key={follower.id} follower={follower} />)}
     </Container>
   )
 }

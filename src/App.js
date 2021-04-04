@@ -16,6 +16,7 @@ import Profile from "./screens/Profile";
 import Signup from "./screens/Signup";
 import GalleryUpload from "./screens/GalleryUpload";
 import Search from "./screens/Search";
+import EditProfile from "./screens/EditProfile";
 
 function App() {
   const isLoggedIn = useSelector(state => state.userReducer.isLoggedIn);
@@ -39,6 +40,7 @@ function App() {
         {isLoggedIn ? <Route path='/upload' component={GalleryUpload} /> : <Redirect to='/login' />}
         {isLoggedIn ? <Route path='/communityupload' component={CommunityUpload} /> : <Redirect to='/login' />}
         {isLoggedIn ? <Route path='/user/:id' component={Profile} /> : <Redirect to="/login" />}
+        {isLoggedIn ? <Route path='/edit/profile' component={EditProfile} /> : <Redirect to='/login' />}
       </Switch>
     </Router>
   );

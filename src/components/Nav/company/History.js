@@ -6,6 +6,7 @@ const Container = styled.div`
   grid-template-rows: repeat(2, 1fr);
   grid-gap: 30px;
   font-size: 20px;
+  height: calc(100vh - 690px);
 `;
 
 const Year = styled.div`
