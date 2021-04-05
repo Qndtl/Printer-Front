@@ -45,7 +45,9 @@ function Follower({ follower }) {
 
   useEffect(() => {
     const getApi = async () => {
-      const result = await axios.post('http://localhost:4000/checkfollower', { follower }, { headers: { token } });
+      const result = await axios.post(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/checkfollower` :
+        'http://localhost:4000/checkfollower', { follower }, { headers: { token } });
       setIsFollowing(result.data.isFollowing);
     }
     getApi();
@@ -53,13 +55,17 @@ function Follower({ follower }) {
 
 
   const clickFollow = async () => {
-    const result = await axios.post('http://localhost:4000/follow', { userId: follower.id }, { headers: { token } });
+    const result = await axios.post(process.env.NODE_ENV === "production" ?
+      `https://four-top-printer.herokuapp.com/follow` :
+      'http://localhost:4000/follow', { userId: follower.id }, { headers: { token } });
     setIsFollowing(true);
     console.log(result.data);
   }
 
   const clickUnfollow = async () => {
-    const result = await axios.post('http://localhost:4000/unfollow', { userId: follower.id }, { headers: { token } });
+    const result = await axios.post(process.env.NODE_ENV === "production" ?
+      `https://four-top-printer.herokuapp.com/unfollow` :
+      'http://localhost:4000/unfollow', { userId: follower.id }, { headers: { token } });
     setIsFollowing(false);
     console.log(result.data);
   }

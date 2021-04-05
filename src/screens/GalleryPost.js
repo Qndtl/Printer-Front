@@ -109,11 +109,15 @@ function GalleryPost() {
   useEffect(() => {
     const getApi = async () => {
       if (!token) {
-        const result = await axios.get(`http://localhost:4000/gallerypost?id=${id}`);
+        const result = await axios.get(process.env.NODE_ENV === "production" ?
+          `https://four-top-printer.herokuapp.com/gallerypost?id=${id}` :
+          `http://localhost:4000/gallerypost?id=${id}`);
         setPost(result.data.post);
         setTotalLike(result.data.post.galleryLike.length);
       } else {
-        const result = await axios.get(`http://localhost:4000/gallerypost?id=${id}&token=${token}`);
+        const result = await axios.get(process.env.NODE_ENV === "production" ?
+          `https://four-top-printer.herokuapp.com/gallerypost?id=${id}&token=${token}` :
+          `http://localhost:4000/gallerypost?id=${id}&token=${token}`);
         //console.log(result.data)
         setIsLiked(result.data.isLiked);
         setPost(result.data.post);
@@ -126,19 +130,25 @@ function GalleryPost() {
 
   const onSubmit = async e => {
     //e.preventDefault();
-    const result = await axios.post("http://localhost:4000/gallerycomment", { comment, postId: post?.id }, { headers: { token: localStorage.getItem('jwt') } });
+    const result = await axios.post(process.env.NODE_ENV === "production" ?
+      `https://four-top-printer.herokuapp.com/gallerycomment` :
+      "http://localhost:4000/gallerycomment", { comment, postId: post?.id }, { headers: { token: localStorage.getItem('jwt') } });
     console.log(result.data);
   }
   //console.log(post);
 
   const onClick = async () => {
     if (!isLiked) {
-      const result = await axios.get(`http://localhost:4000/gallerylike?id=${id}`, { headers: { token } });
+      const result = await axios.get(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/gallerylike?id=${id}` :
+        `http://localhost:4000/gallerylike?id=${id}`, { headers: { token } });
       setIsLiked(true);
       setTotalLike(totalLike + 1)
       console.log(result.data);
     } else {
-      const result = await axios.get(`http://localhost:4000/galleryunlike?id=${id}`, { headers: { token } });
+      const result = await axios.get(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/galleryunlike?id=${id}` :
+        `http://localhost:4000/galleryunlike?id=${id}`, { headers: { token } });
       setIsLiked(false);
       setTotalLike(totalLike - 1)
       console.log(result.data);

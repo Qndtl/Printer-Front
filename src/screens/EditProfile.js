@@ -52,7 +52,9 @@ export default function EditProfile() {
     if (npassword !== vpassword) {
       alert("new password and validation password is not same")
     }
-    const result = await axios.post('http://localhost:4000/edit/profile', { username, cpassword, npassword, vpassword, bio }, { headers: { token } });
+    const result = await axios.post(process.env.NODE_ENV === "production" ?
+      `https://four-top-printer.herokuapp.com/edit/profile` :
+      'http://localhost:4000/edit/profile', { username, cpassword, npassword, vpassword, bio }, { headers: { token } });
     if (result?.data?.message === "Username already exists") {
       alert(result.data.message)
     }

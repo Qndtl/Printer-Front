@@ -39,7 +39,9 @@ function Cpost({ id }) {
   const [data, setData] = useState(null);
   useEffect(() => {
     const getApi = async () => {
-      const result = await axios.get(`http://localhost:4000/onecommunity?id=${id?.id}`, { headers: { token } });
+      const result = await axios.get(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/onecommunity?id=${id?.id}` :
+        `http://localhost:4000/onecommunity?id=${id?.id}`, { headers: { token } });
       setData(result.data);
       //console.log(result.data);
     }

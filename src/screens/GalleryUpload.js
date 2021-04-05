@@ -117,7 +117,9 @@ function GalleryUpload() {
     }
     const fileResult = await axios({
       method: "POST",
-      url: `http://localhost:4000/upload?title=${title}&description=${description}`,
+      url: process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/upload?title=${title}&description=${description}` :
+        `http://localhost:4000/upload?title=${title}&description=${description}`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",

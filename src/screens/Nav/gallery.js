@@ -109,7 +109,9 @@ function Gallery() {
     getApi() ;
     */
     const getApi = async () => {
-      const result = await axios.get('http://localhost:4000/monthly');
+      const result = await axios.get(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/monthly` :
+        'http://localhost:4000/monthly');
       setFrees(result.data.galleryPost);
       setUsers(result.data.userByTotalCount);
     }

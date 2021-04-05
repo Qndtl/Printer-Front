@@ -112,7 +112,9 @@ function Header() {
   const dispatch = useDispatch();
   useEffect(() => {
     const getApi = async () => {
-      const result = await axios.get('http://localhost:4000/me', { headers: { token } });
+      const result = await axios.get(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/me` :
+        'http://localhost:4000/me', { headers: { token } });
       if (result?.data?.response?.message === "Error in jwt verify") {
         dispatch(logout());
         localStorage.removeItem('jwt');

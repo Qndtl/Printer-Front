@@ -93,7 +93,9 @@ export default function Search() {
 
   useEffect(() => {
     const getGalleryApi = async () => {
-      const result = await axios.get(`http://localhost:4000/search/gallery?term=${location?.state?.search}&page=${galleryPage}`);
+      const result = await axios.get(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/search/gallery?term=${location?.state?.search}&page=${galleryPage}` :
+        `http://localhost:4000/search/gallery?term=${location?.state?.search}&page=${galleryPage}`);
       setGallerys(result.data.galleryPosts);
       setGalleryTotalPage(result.data.totalPage);
       //console.log(result.data);
@@ -102,7 +104,9 @@ export default function Search() {
   }, [location?.state?.search, galleryPage])
   useEffect(() => {
     const getUserApi = async () => {
-      const result = await axios.get(`http://localhost:4000/search/user?term=${location?.state?.search}&page=${userPage}`);
+      const result = await axios.get(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/search/user?term=${location?.state?.search}&page=${userPage}` :
+        `http://localhost:4000/search/user?term=${location?.state?.search}&page=${userPage}`);
       setUsers(result.data.users);
       setUserTotalPage(result.data.totalPage);
       //console.log(result.data);

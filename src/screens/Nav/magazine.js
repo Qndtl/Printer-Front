@@ -19,5 +19,4 @@ function Magazine() {
     </HeaderLayout>
   )
 }
-
 export default Magazine;

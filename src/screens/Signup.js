@@ -75,7 +75,9 @@ function Signup() {
   const history = useHistory();
   const onSubmit = async (e) => {
     e.preventDefault();
-    const result = await axios.post('http://localhost:4000/signup', { username, email, password });
+    const result = await axios.post(process.env.NODE_ENV === "production" ?
+      `https://four-top-printer.herokuapp.com/signup` :
+      'http://localhost:4000/signup', { username, email, password });
     if (result.data.message === "회원가입 완료.") {
       history.push('/login');
     }

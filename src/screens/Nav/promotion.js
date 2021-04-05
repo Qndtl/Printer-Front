@@ -19,5 +19,4 @@ function Promotion() {
     </HeaderLayout>
   )
 }
-
 export default Promotion;

@@ -73,11 +73,15 @@ function PostDetail({ modal, setModal, postData }) {
     const getApi = async () => {
       const postId = postData.id;
       if (!token) {
-        const result = await axios.get(`http://localhost:4000/communitypost?postId=${postId}`);
+        const result = await axios.get(process.env.NODE_ENV === "production" ?
+          `https://four-top-printer.herokuapp.com/communitypost?postId=${postId}` :
+          `http://localhost:4000/communitypost?postId=${postId}`);
         setTotalLike(result.data.post.communityLike.length)
         //console.log(result.data.isLiked);
       } else {
-        const result = await axios.get(`http://localhost:4000/communitypost?postId=${postId}`, { headers: { token } });
+        const result = await axios.get(process.env.NODE_ENV === "production" ?
+          `https://four-top-printer.herokuapp.com/communitypost?postId=${postId}` :
+          `http://localhost:4000/communitypost?postId=${postId}`, { headers: { token } });
         setTotalLike(result.data.post.communityLike.length)
         setIsLiked(result.data.isLiked);
         //console.log(result.data);
@@ -88,19 +92,25 @@ function PostDetail({ modal, setModal, postData }) {
 
   const onSubmit = async e => {
     //e.preventDefault();
-    const result = await axios.post("http://localhost:4000/communitycomment", { comment, postId: postData?.id }, { headers: { token: localStorage.getItem('jwt') } });
+    const result = await axios.post(process.env.NODE_ENV === "production" ?
+      `https://four-top-printer.herokuapp.com/communitycomment` :
+      "http://localhost:4000/communitycomment", { comment, postId: postData?.id }, { headers: { token: localStorage.getItem('jwt') } });
     console.log(result.data);
   }
 
   const onClick = async () => {
     const id = postData.id;
     if (!isLiked) {
-      const result = await axios.get(`http://localhost:4000/communitylike?id=${id}`, { headers: { token } });
+      const result = await axios.get(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/communitylike?id=${id}` :
+        `http://localhost:4000/communitylike?id=${id}`, { headers: { token } });
       setIsLiked(true);
       setTotalLike(totalLike + 1)
       console.log(result.data);
     } else {
-      const result = await axios.get(`http://localhost:4000/communityunlike?id=${id}`, { headers: { token } });
+      const result = await axios.get(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/communityunlike?id=${id}` :
+        `http://localhost:4000/communityunlike?id=${id}`, { headers: { token } });
       setIsLiked(false);
       setTotalLike(totalLike - 1)
       console.log(result.data);

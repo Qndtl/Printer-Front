@@ -109,7 +109,9 @@ function Profile() {
   const [action, setAction] = useState(null);
   useEffect(() => {
     const getApi = async () => {
-      const result = await axios.get(`http://localhost:4000/getuser?id=${id}`, { headers: { token } });
+      const result = await axios.get(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/getuser?id=${id}` :
+        `http://localhost:4000/getuser?id=${id}`, { headers: { token } });
       console.log(result?.data);
       setUser(result?.data?.user);
       setIsSelf(result?.data?.isSelf);
@@ -128,14 +130,18 @@ function Profile() {
   }, [id, token, history])
 
   const clickFollow = async () => {
-    const result = await axios.post(`http://localhost:4000/follow`, { userId: id }, { headers: { token } });
+    const result = await axios.post(process.env.NODE_ENV === "production" ?
+      `https://four-top-printer.herokuapp.com/follow` :
+      `http://localhost:4000/follow`, { userId: id }, { headers: { token } });
     setIsFollowing(true);
     setFollowerNum(followerNum + 1);
     console.log(result.data);
   }
 
   const clickUnfollow = async () => {
-    const result = await axios.post(`http://localhost:4000/unfollow`, { userId: id }, { headers: { token } });
+    const result = await axios.post(process.env.NODE_ENV === "production" ?
+      `https://four-top-printer.herokuapp.com/unfollow` :
+      `http://localhost:4000/unfollow`, { userId: id }, { headers: { token } });
     setIsFollowing(false);
     setFollowerNum(followerNum - 1);
     console.log(result.data);

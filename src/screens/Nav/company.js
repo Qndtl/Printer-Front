@@ -7,6 +7,7 @@ import Greet from "../../components/Nav/company/Greet";
 import Vision from "../../components/Nav/company/Vision";
 import History from "../../components/Nav/company/History";
 
+
 const IntroContainer = styled.div`
   width: 90%;
   padding: 20px;

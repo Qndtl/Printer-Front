@@ -94,7 +94,9 @@ function CommunityUpload() {
     }
     const fileResult = await axios({
       method: "POST",
-      url: `http://localhost:4000/communityupload?title=${title}&description=${description}&subject=${action}`,
+      url: process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/communityupload?title=${title}&description=${description}&subject=${action}` :
+        `http://localhost:4000/communityupload?title=${title}&description=${description}&subject=${action}`,
       data: formData,
       headers: {
         "Content-Type": "multipart/form-data",

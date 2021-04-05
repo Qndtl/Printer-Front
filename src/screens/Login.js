@@ -79,7 +79,9 @@ function Login() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const result = await axios.post('http://localhost:4000/login', { username, password });
+    const result = await axios.post(process.env.NODE_ENV === "production" ?
+      `https://four-top-printer.herokuapp.com/login` :
+      'http://localhost:4000/login', { username, password });
     console.log(result.data.response)
     if (result.data.response.token) {
       localStorage.setItem('jwt', result.data.response.token);

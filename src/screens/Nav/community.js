@@ -88,7 +88,9 @@ function Community() {
 
   useEffect(() => {
     const getApi = async () => {
-      const result = await axios.get(`http://localhost:4000/communityposts?subject=${action}`);
+      const result = await axios.get(process.env.NODE_ENV === "production" ?
+        `https://four-top-printer.herokuapp.com/communityposts?subject=${action}` :
+        `http://localhost:4000/communityposts?subject=${action}`);
       //maybe pagination needed.
       //console.log(result.data);
       setPosts(result.data);
