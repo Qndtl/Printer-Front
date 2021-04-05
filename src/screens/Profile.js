@@ -112,7 +112,7 @@ function Profile() {
       const result = await axios.get(process.env.NODE_ENV === "production" ?
         `https://four-top-printer.herokuapp.com/getuser?id=${id}` :
         `http://localhost:4000/getuser?id=${id}`, { headers: { token } });
-      console.log(result?.data);
+      //console.log(result?.data);
       setUser(result?.data?.user);
       setIsSelf(result?.data?.isSelf);
       setIsFollowing(result?.data?.isFollowing);

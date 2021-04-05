@@ -6,11 +6,17 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
+const NotFound = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 function Gposts({ galleryPostsId }) {
   //console.log(galleryPostsId);
   return (
     <Container>
-      {galleryPostsId === 0 ? "Gallery post not found" : galleryPostsId?.map((id, i) => <Gpost key={i} id={id} />)}
+      {galleryPostsId.length === 0 ? <NotFound>Gallery post not found</NotFound> : galleryPostsId?.map((id, i) => <Gpost key={i} id={id} />)}
     </Container>
   )
 }

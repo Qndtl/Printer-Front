@@ -83,10 +83,15 @@ function Login() {
       `https://four-top-printer.herokuapp.com/login` :
       'http://localhost:4000/login', { username, password });
     console.log(result.data.response)
+    console.log(result)
+    if (result.data.message === "등록된 사용자가 없습니다. 회원가입이 필요합니다.") {
+      alert("등록된 사용자가 없습니다. 회원가입이 필요합니다.");
+      return history.push('/signup');
+    }
     if (result.data.response.token) {
       localStorage.setItem('jwt', result.data.response.token);
       dispatch(login({ token: result.data.response.token, username: result.data.response.username, email: result.data.response.email, id: result.data.response.id }));
-      history.go(-1);
+      history.push('/');
     }
   }
   return (
