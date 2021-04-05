@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -65,8 +66,8 @@ function Follower({ follower }) {
   //console.log(follower)
   return (
     <Container>
-      <img src={follower.avatar} alt={follower.avatar} />
-      <span>{follower.username}</span>
+      <Link to={`/user/${follower.id}`}><img src={follower.avatar} alt={follower.avatar} /></Link>
+      <Link to={`/user/${follower.id}`}><span>{follower.username}</span></Link>
       <div>{isFollowing ? <UnfollowButton onClick={clickUnfollow}>언팔로우</UnfollowButton> : <FollowButton onClick={clickFollow}>팔로우</FollowButton>}</div>
     </Container>
   )

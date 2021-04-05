@@ -110,13 +110,16 @@ function Profile() {
   useEffect(() => {
     const getApi = async () => {
       const result = await axios.get(`http://localhost:4000/getuser?id=${id}`, { headers: { token } });
-      //console.log(result.data);
-      setUser(result.data.user);
-      setIsSelf(result.data.isSelf);
-      setIsFollowing(result.data.isFollowing);
-      setFollowerNum(result.data.user.followers.length);
-      setFollowingNum(result.data.user.following.length);
+      console.log(result?.data);
+      setUser(result?.data?.user);
+      setIsSelf(result?.data?.isSelf);
+      setIsFollowing(result?.data?.isFollowing);
+      setFollowerNum(result?.data?.user?.followers?.length);
+      setFollowingNum(result?.data?.user?.following?.length);
 
+      if (result?.data?.message === "User not found") {
+        history.go(-1);
+      }
       if (result?.data?.response?.message === "Error in jwt verify") {
         history.push('/login');
       }
@@ -161,7 +164,7 @@ function Profile() {
                 <span>게시물 {user?.CommunityPost?.length + user?.GalleryPost?.length}</span>
               </Row>
               <Row>
-                <span>소개 </span>
+                <span>소개 - {user?.bio}</span>
               </Row>
             </InfoContainer>
           </UserContainer>

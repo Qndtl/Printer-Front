@@ -92,19 +92,19 @@ const MonthlyColumn = styled.div`
   max-width: 430px;
   width: 100%;
   &:first-child{
-    background-color: red;
     background-image: url(${props => props.src});
     background-size: cover;
+    background-position: center;
   }
   &:nth-child(2){
-    background-color: green;
     background-image: url(${props => props.src});
     background-size: cover;
+    background-position: center;
   }
   &:last-child{
-    background-color: blue;
     background-image: url(${props => props.src});
     background-size: cover;
+    background-position: center;
   }
 `;
 
@@ -156,6 +156,21 @@ const Login = styled.div`
   padding: 0px 10px 4px 10px;
   border: 3px solid forestgreen;
   border-radius: 10px;
+`;
+
+const BgTextCon = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-weight: 600;
+`;
+
+const BgText = styled.span`
+  margin-top: 10px;
+  padding: 5px;
+  background-color: black;
+  opacity: 0.5;
+  color: white;
 `;
 
 function Home() {
@@ -211,9 +226,27 @@ function Home() {
         </NavBar>
         <MonthlyWrapper>
           <MonthlyContainer>
-            <MonthlyColumn src={null}>이달의 무료 작품</MonthlyColumn>
-            <MonthlyColumn src={null}>이달의 유료 작품</MonthlyColumn>
-            <MonthlyColumn src={null}>이달의 크리에이터</MonthlyColumn>
+            <MonthlyColumn src={"https://i.pinimg.com/originals/eb/ee/2f/ebee2ff624378ad29f04678cf03d6fb5.jpg"}>
+              <Link to='/gallery'>
+                <BgTextCon>
+                  <BgText>이달의 무료 작품</BgText>
+                </BgTextCon>
+              </Link>
+            </MonthlyColumn>
+            <MonthlyColumn src={"https://preview.free3d.com/img/2018/02/2179871179966253013/lyh99bm7-900.jpg"}>
+              <Link to='/gallery'>
+                <BgTextCon>
+                  <BgText>이달의 유료 작품</BgText>
+                </BgTextCon>
+              </Link>
+            </MonthlyColumn>
+            <MonthlyColumn src={"https://bimassistblog.files.wordpress.com/2015/08/3d-model.jpg"}>
+              <Link to='/gallery'>
+                <BgTextCon>
+                  <BgText>이달의 크리에이터</BgText>
+                </BgTextCon>
+              </Link>
+            </MonthlyColumn>
           </MonthlyContainer>
         </MonthlyWrapper>
         <BannerContainer>

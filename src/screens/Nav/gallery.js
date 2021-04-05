@@ -41,6 +41,10 @@ const User = styled.div`
 `;
 
 const Banner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
 `;
 
 const Title = styled.span`
@@ -69,15 +73,6 @@ const Container = styled.div`
 const Slide = keyframes`
   0%{
     right: -100%;
-  }
-  25%{
-    right: -50%;
-  }
-  50%{
-    right: 0%;
-  }
-  75%{
-    right: 50%;
   }
   100%{
     right: 100%;
@@ -135,7 +130,7 @@ function Gallery() {
           <Title>이달의 유료 작품</Title>
           <Container>
             {/* pays?.map(post => <PostCard key={post.id} post={post} />) */}
-            <Prepare>유료 도면 준비중</Prepare>
+            <Prepare>유료 작품 준비중</Prepare>
           </Container>
         </Payment>
         <User>

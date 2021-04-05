@@ -7,7 +7,7 @@ const Container = styled.div`
 `;
 
 function Cposts({ communityPostsId }) {
-  console.log(communityPostsId);
+  //console.log(communityPostsId);
   return (
     <Container>
       {communityPostsId.length === 0 ? "Community post not found" : communityPostsId?.map((id, i) => <Cpost key={i} id={id} />)}

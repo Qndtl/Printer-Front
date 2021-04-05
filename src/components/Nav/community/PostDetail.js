@@ -60,6 +60,7 @@ const CountContainer = styled.div`
   display: flex;
   align-items: center;
   padding-left: 50px;
+  padding-top: 20px;
 `;
 
 function PostDetail({ modal, setModal, postData }) {
