@@ -54,11 +54,12 @@ const LogoContainer = styled.div`
     font-weight: 600;
   }
 `;
-const Logo = styled.div`
+const Logo = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 50%;
   background-color: skyblue;
+  object-fit: cover;
 `;
 
 const Signup = styled.div`
@@ -98,7 +99,7 @@ function Login() {
     <Wrapper>
       <FormContainer>
         <LogoContainer>
-          <Link to='/'><Logo /></Link>
+          <Link to='/'><Logo src='https://prisma-instaclone.s3.ap-northeast-2.amazonaws.com/printer/gallery/1616932080146_logo.JPG' /></Link>
           <span>4TOP</span>
         </LogoContainer>
         <form onSubmit={onSubmit}>
