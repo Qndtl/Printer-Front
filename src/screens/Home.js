@@ -7,7 +7,7 @@ import { UserIcon } from "../components/Icons";
 import { logout } from "../redux/actions";
 
 const Wrapper = styled.div`
-  min-width: 1310px;
+  min-width: 1024px;
 `;
 
 const HeaderContainer = styled.div`
@@ -56,9 +56,6 @@ const LoginMenu = styled.div`
     button {
       display: none;
     }
-  }
-  a{
-    margin-left: 40px;
   }
 `;
 

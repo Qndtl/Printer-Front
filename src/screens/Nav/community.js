@@ -9,7 +9,7 @@ import PostDetail from "../../components/Nav/community/PostDetail";
 import { Wrapper } from "../../components/Nav/sharedStyle";
 
 const Container = styled.div`
-  min-width: 1310px;
+  min-width: 1024px;
   width: 90%;
   display: grid;
   grid-template-columns: 15% 85%;

@@ -13,12 +13,14 @@ import Gposts from "../components/Profile/Gposts/Gposts";
 
 const Container = styled.div`
   height: calc(100vh - 380px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const UserContainer = styled.div`
-  min-width: 1310px;
+  min-width: 1024px;
   max-width: 1310px;
-  width: 100%;
   height: 400px;
   display: flex;
 `;
@@ -78,8 +80,8 @@ const EditButton = styled.button`
 const FollowButton = styled(EditButton)``;
 
 const MoreContainer = styled.div`
-  min-width: 1310px;
-  max-width: 1310px;
+  min-width: 1024px;
+  max-width: 1024px;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -174,7 +176,7 @@ function Profile() {
               </Row>
             </InfoContainer>
           </UserContainer>
-          <hr style={{ width: "70%", minWidth: "1310px" }} />
+          <hr style={{ width: "70%", minWidth: "1024px" }} />
           <MoreContainer>
             <NavContainer>
               <ul>

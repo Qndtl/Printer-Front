@@ -8,7 +8,7 @@ import { Wrapper } from "../components/Nav/sharedStyle";
 
 const Container = styled.div`
   max-width: 1310px;
-  min-width: 1310px;
+  min-width: 1024px;
   display: flex;
   flex-direction: column;
 `;

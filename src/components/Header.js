@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { logout } from '../redux/actions';
@@ -9,12 +10,12 @@ import { UserIcon } from './Icons';
 
 const HeaderContainer = styled.div`
   display: grid;
-  grid-template-columns: 0.8fr 1.6fr 1fr;
+  grid-template-columns: 0.3fr 1fr 1fr;
   grid-template-rows: 1fr;
   height: 140px;
   border-bottom: 1px solid black;
   align-items: center;
-  min-width: 1310px;
+  min-width: 1024px;
   justify-content: space-between;
   svg {
     cursor: pointer;
@@ -49,7 +50,7 @@ const NavBar = styled.nav`
   ul{
     display: flex;
     li{
-      margin: 0px 20px;
+      margin: 0px 25px;
     }
   }
 `;
@@ -136,24 +137,27 @@ function Header() {
     dispatch(logout());
     localStorage.removeItem('jwt');
   }
+  const isPc = useMediaQuery({ query: '(min-width: 1770px)' })
   return (
     <HeaderContainer>
       <LogoContainer>
         <Link to='/'><Logo src="https://prisma-instaclone.s3.ap-northeast-2.amazonaws.com/printer/gallery/1616932080146_logo.JPG" /></Link>
-        <BrandName>
-          <span><Link to='/'>4TOP</Link></span>
-          <span><Link to='/'>ALL 4th TO PEOPLE</Link></span>
-        </BrandName>
+        {
+          isPc ? <BrandName>
+            <span><Link to='/'>4TOP</Link></span>
+            <span><Link to='/'>ALL 4th TO PEOPLE</Link></span>
+          </BrandName> : null
+        }
       </LogoContainer>
       <NavBar>
         <ul>
           <Link to='/gallery'><li>3D갤러리</li></Link>
           <Link to='/community'><li>커뮤니티</li></Link>
           <Link to='/rental'><li>렌탈</li></Link>
-          <Link to='/promotion'><li>프로모션</li></Link>
-          <Link to='/magazine'><li>매거진</li></Link>
           <Link to='/company'><li>회사소개</li></Link>
-          {/* <Link to='/service'><li>고객센터</li></Link> */}
+          {/* <Link to='/magazine'><li>매거진</li></Link>
+          <Link to='/promotion'><li>프로모션</li></Link>
+          <Link to='/service'><li>고객센터</li></Link> */}
         </ul>
       </NavBar>
       <LoginMenu>

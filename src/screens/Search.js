@@ -9,12 +9,12 @@ import SearchCard from "../components/Search/SearchCard";
 import SearchUser from "../components/Search/SearchUser";
 
 const Container = styled.div`
-  min-width: 1310px;
-  max-width: 1310px;
+  min-width: 1024px;
+  max-width: 1024px;
 `;
 
 const Row = styled.div`
-  width: 100%;
+  min-width: 1024px;
   margin-top: 50px;
   border-bottom: 1px solid black;
   height: 420px;
@@ -114,7 +114,7 @@ export default function Search() {
     getUserApi();
   }, [location?.state?.search, userPage])
 
-  console.log(galleries)
+  //console.log(galleries)
   return (
     <HeaderLayout>
       <Wrapper>

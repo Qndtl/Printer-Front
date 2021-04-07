@@ -19,14 +19,14 @@ const UploadBtn = styled.div`
 
 const Free = styled.div`
   height: 400px;
-  min-width: 1310px;
+  min-width: 1024px;
   width: 100%;
   border-bottom: 1px solid black;
 `;
 
 const Payment = styled.div`
   height: 400px;
-  min-width: 1310px;
+  min-width: 1024px;
   width: 100%;
   border-bottom: 1px solid black;
   margin-top: 50px;
@@ -34,7 +34,7 @@ const Payment = styled.div`
 
 const User = styled.div`
   height: 400px;
-  min-width: 1310px;
+  min-width: 1024px;
   width: 100%;
   border-bottom: 1px solid black;
   margin-top: 50px;
@@ -83,7 +83,7 @@ const Prepare = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 150px;
+  font-size: 120px;
   width: 100%;
   height: 100%;
   font-weight: 600;

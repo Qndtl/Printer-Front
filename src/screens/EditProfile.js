@@ -6,7 +6,7 @@ import HeaderLayout from "../components/HeaderLayout";
 import { Wrapper } from "../components/Nav/sharedStyle";
 
 const Container = styled.div`
-  min-width: 1310px;
+  min-width: 1024px;
   height: calc(100vh - 390px);
   display: flex;
   justify-content: center;

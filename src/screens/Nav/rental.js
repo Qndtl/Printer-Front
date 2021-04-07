@@ -4,7 +4,7 @@ import Printer from "../../components/Nav/rental/Printer";
 import { Wrapper } from "../../components/Nav/sharedStyle";
 
 const Container = styled.div`
-  min-width: 1310px;
+  min-width: 1024px;
   width: 100%;
   height: calc(100vh - 220px);
   display: flex;
@@ -16,7 +16,7 @@ const Container = styled.div`
 const Row = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 1310px;
+  min-width: 1024px;
   width: 100%;
   height: 500px;
   border: 1px solid black;
