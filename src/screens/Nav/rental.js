@@ -49,7 +49,6 @@ function Rental() {
               <Printer />
               <Printer />
               <Printer />
-              <Printer />
             </ProductContainer>
           </Row>
         </Container>
